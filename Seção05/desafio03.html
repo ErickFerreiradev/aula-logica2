@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio</title>
+</head>
+<body>  
+    <script>
+        
+        let contadorvezesjog = 0
+        let contadorvezespar = 0
+        let contadorigual = 0
+
+        while(true){
+            let dado1 = parseInt(Math.random() * 6 + 1)
+            let dado2 = parseInt(Math.random() * 6 + 1)
+            
+            console.log(dado1, dado2, contadorvezesjog, contadorvezespar)
+            
+
+            if((dado1 === dado2)){
+                continue
+            }
+            contadorvezesjog++
+            
+            if((dado1 + dado2) % 2 === 0){
+                contadorvezespar++
+            }  
+            
+            if(contadorvezespar >=10){
+                break
+            }
+        }
+        console.log("Os dados foram jogados: " + contadorvezesjog + " vezes" + " até dar 10 pares")
+
+           
+            
+    </script>
+</body>
+</html>
