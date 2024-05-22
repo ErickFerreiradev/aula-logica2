@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Objetos 02</title>
+</head>
+<body>
+    <script>
+        
+        const endereco = {
+            lougradouro: "Rua x",
+            numero: 5,
+        }
+
+        const pessoa = {
+            nome: "João",
+            sobrenome: "Souza",
+            endereco: endereco // ou só endereco pois já foi declarado
+        }
+        
+        //loop for..in serve pra interagir com um objeto
+        for(let teste in pessoa){
+            // console.log(teste)
+            console.log(pessoa[teste])
+        }
+
+
+    </script>
+</body>
+</html>
