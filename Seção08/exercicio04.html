@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Calcula triangulo</h1>
+    <input type="number" id="altura" autocomplete="off" placeholder="Altura">
+    <input type="number" id="largura" autocomplete="off" placeholder="Largura">
+    <button onclick="Calcular()">Enviar</button>
+    <div id="output"></div>
+
+    <script>
+        const altura = document.getElementById("altura")
+        const largura = document.getElementById("largura")
+        const output = document.getElementById("output")
+
+        function Calcular(){
+            let alturaValue = altura.value
+            let larguraValue = largura.value
+
+            let area = (larguraValue * alturaValue) / 2
+
+            output.innerHTML = `A área do tringura é ${area}`
+        }   
+
+        </script>
+</body>
+</html>

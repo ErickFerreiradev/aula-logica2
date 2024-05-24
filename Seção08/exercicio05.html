@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Area circulo</title>
+</head>
+<body>
+    <h1>Área circulo</h1>
+    <input type="number" id="raio">
+    <button onclick="Calcular()">Calcular</button>
+    <div id="output"></div>
+    <script>
+        const raio = document.getElementById("raio")
+        const output = document.getElementById("output")
+        const pi = Math.PI
+        function Calcular(){
+            let areaValue = raio.value
+            let area = (Math.pow(raio.value, 2) * Math.PI)
+
+            output.innerHTML = `A àrea é: ${area}`
+
+        }
+        
+
+        
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio 03</title>
+</head>
+<body>
+    <h1>Função</h1>
+
+    <input type="number" id ="number" autocomplete="off">
+    <button onclick="mostrarTabuada()">Mostrar Tabuada</button>
+    <button onclick="Limpar()">Limpar</button>
+    <div id="output"></div>
+    
+
+    <script>
+
+        const input = document.getElementById("number")
+        const output = document.getElementById("output")
+        
+        let tabuada = ""
+
+        function mostrarTabuada(){
+            const inputValue = parseFloat(input.value)
+
+            Limpar()
+
+            for (let i= 0; i < 100; i++){
+                tabuada += `${inputValue} x ${i} = ${i * inputValue} <br>`
+            }
+
+            output.innerHTML = tabuada
+        }
+         function Limpar(){
+            tabuada = ""
+            output.innerHTML = ""
+         }
+
+    </script>
+</body>
+</html>
