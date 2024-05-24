@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 01</title>
+</head>
+<body>
+
+    <ul id="listaPessoas">
+
+    </ul>
+
+    <script>
+
+        const pessoas = [
+        {nome: "daniel", email: "daniel@email.com"},
+        {nome: "João", email: "joao@email.com"},
+        {nome: "Ricardo", email: "ricardo@email.com"},
+        ]
+
+        const listaPessoas = document.getElementById("listaPessoas")
+
+        for(let i= 0; i< pessoas.length; i++){
+            console.log(pessoas[i].nome)
+            listaPessoas.innerHTML += "<li> " + pessoas[i].nome + ": " +  pessoas[i].email +"</li>"
+
+        }
+
+
+
+        
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 02</title>
+</head>
+<body>
+    <h1>Aluno e média</h1>
+    <ul id="lista">
+
+    </ul>
+
+
+    <script>
+
+        const alunos = [
+            {
+                nome: "nome 1",
+                notas: [1,3,3,8],
+            },
+            {
+                nome: "nome 2",
+                notas: [10,5,5,3],
+            },
+        ]
+        
+        const lista = document.getElementById("lista")
+        let alunosHTML = ""
+
+        for(let i= 0; i < alunos.length; i++){
+            alunosHTML += "<li>" + alunos[i].nome + ", média: "
+                let soma = 0
+            for(let j= 0; j < alunos[i].notas.length; j++){
+                console.log("i", i, "j", j)
+                soma += alunos[i].notas[j]
+            } 
+            let media = soma / alunos[i].notas.length
+            alunosHTML += media  + "</li>"
+        }
+        lista.innerHTML = alunosHTML
+    </script>
+</body>
+</html>

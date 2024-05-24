@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DOM</title>
+</head>
+<body>
+    <h1>DOM</h1>
+
+    <h2 id="Titulo">Lista tarefas</h2>
+    <ol id="listaTarefas">
+        <li>Java</li>
+        <li>Javascript</li>
+        <li>Typescrpit</li>
+        <li>C#</li>
+    </ol>
+
+    <script>
+        document.getElementById("Titulo").textContent = "Titulo alterado"
+
+        const lista = document.getElementById("listaTarefas")
+        let novaTarefa = "<li>C</li>"
+
+        lista.innerHTML = lista.innerHTML += novaTarefa
+    </script>
+</body>
+</html>
