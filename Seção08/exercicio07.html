@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>Área circulo</h1>
+    <label>Raio
+    <input type="number" id="raio">
+    </label>
+    <button onclick="MostrarAreaDoPromptAlert()">Calcular area do prompt e mostrar no alert</button>
+    <button onclick="MostrarAreaDoInputAlert()">Calcular area do input e mostrar no alert</button>
+    <br>
+    
+    <div id="output"></div>
+    <script>
+        const raio = document.getElementById("raio")
+        const output = document.getElementById("output")
+
+        function MostrarAreaDoPromptAlert(){
+            let area = parseFloat(prompt("Digite a área"))
+            let calculo = mostrarArea(area)
+            alert(calculo)
+        }
+
+        function MostrarAreaDoInputAlert(){
+            let raioValue = parseFloat(raio.value)
+            let calculo = mostrarArea(raioValue)
+            alert(calculo)
+        }
+
+
+        function mostrarArea(raio){
+            let area = (Math.pow(raio, 2) * Math.PI)
+            return `A àrea é: ${area}`
+        }
+        
+        
+
+    </script>
+</body>
+</html>
