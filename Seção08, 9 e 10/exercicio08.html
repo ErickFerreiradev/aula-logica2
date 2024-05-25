@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: gray;
+        }
+    </style>
+</head>
+<body>
+    <h1>Try e catch</h1>
+
+    <div id="mudei"></div>
+
+    <script>
+
+        let obj = {
+            nome: "Daniel", email: "daniel@email.com"
+        }
+
+        // obj = null
+
+        try{
+            document.getElementById("mudei").innerHTML = `Nome: ${obj.nome}, Email: ${obj.email}`
+        } catch(e) {
+            alert(e)
+        } finally{
+            alert("Fim do programa")
+        }
+
+    </script>
+</html>
