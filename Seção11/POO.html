@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>POO</title>
+    <link rel="stylesheet" href="../style.css">
+</head>
+<body>
+    <script>
+
+        class Produto{
+
+            constructor(nome, quantidadeEstoque){
+                this.nome = nome
+                this.quantidadeEstoque = quantidadeEstoque
+            }
+            comprar(quantidade){
+                if(typeof quantidade !== "number"){
+                    throw Error("Favor, inserir apenas números")
+                }
+
+                if(quantidade < 0){
+                    throw Error("Quantidade inválida")
+                }
+                
+                if(quantidade > this.quantidadeEstoque){
+                    console.log("Não há quantidade no estoque")
+                    return null
+                }
+                this.quantidadeEstoque -= quantidade
+                console.log(`Você comprou ${quantidade} unidades do produto ${this.nome}`)
+
+            }
+            adicionar(quantidade){
+
+                if(typeof quantidade !== "number"){
+                    throw Error("Favor, inserir apenas números")
+                }
+
+                if(quantidade < 0){
+                    throw Error("Quantidade inválida")
+                }
+
+                
+
+                this.quantidadeEstoque += quantidade
+            }
+
+            estoque(){
+                console.log("A quantidade do objeto " 
+                + this.nome + " é " + this.quantidadeEstoque + " unidades")
+            }
+
+        }
+
+        const caneta = new Produto("caneta", 20)
+        const lapis = new Produto("Lapis", 20)
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Desafio 01</title>
+</head>
+<body>
+    <script>
+
+        class Aluno{
+            constructor(nome, curso){
+                this.nome = nome
+                this.curso = curso
+                this.notas = []
+            }
+
+        adicionarNotas(n1, n2, n3, n4){
+            this.notas= [n1, n2, n3, n4]
+        }
+        
+        #media(){
+            const soma = this.notas[0] + this.notas[1] + this.notas[2] + this.notas[3]
+            const media = soma / 4
+            return media
+        }
+
+        mostrarMedia(){
+            if(this.notas.length !== 4){
+                console.log(`O aluno ${this.aluno} não concluiu as 4 provas`)
+                return
+            }
+            const media = this.#media()
+            console.log(`O Aliuno ${this.nome} do curso ${this.curso} tem média ${media}`)
+        }
+        }
+
+        const Erick = new Aluno("Erick", "TI")
+
+        Erick.adicionarNotas(2, 5, 5, 6)
+        Erick.mostrarMedia()
+
+    </script>
+</body>
+</html>
