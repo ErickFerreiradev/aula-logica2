@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class Produto{
+            #estoque
+            constructor(nome){
+                this.#estoque = 0
+                this.nome = nome
+            }
+            comprar(quantidade){
+                if(quantidade < this.#estoque){
+                    this.#removerDoEstoque(quantidade)
+                    console.log("O estoque de", this.nome, "foi atualizado")
+                } else{
+                    console.log("Quantidade insuficiente")
+                }
+            }
+            adicionarAoEstoque(quantidade){
+                this.#estoque += quantidade
+            }
+            #removerDoEstoque(quantidade){
+                this.#estoque -= quantidade
+            }
+        }
+
+        const caneta = new Produto("caneta")
+        caneta.adicionarAoEstoque(10)
+        caneta.comprar(2)
+    </script>
+</body>
+</html>
