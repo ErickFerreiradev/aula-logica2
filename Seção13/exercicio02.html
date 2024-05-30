@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../style.css">
+    <title>Exercicio 02</title>
+</head>
+<body>
+    <script>
+        // remover do final
+        const arr = [1,2,3,4]
+        console.log(arr)
+        // delete.arr[3] (Não elimina o lenght apenas o valor)
+        arr.length -= 1
+        console.log(arr)
+        arr.pop()
+        console.log(arr)    
+        
+        
+        // remover do início
+        const arr2 = [5,6,7,8]
+
+        for(i=0; i < arr2.length; i++){
+            arr2[i] = arr2[i + 1]
+        } 
+        arr2.length = arr2.length - 1
+        console.log(arr2)
+        // arr2.shift()
+    </script>
+</body>
+</html>
