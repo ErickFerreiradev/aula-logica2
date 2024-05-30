@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exercicio conta</title>
+</head>
+<body>
+    <script>
+
+        class ContaBancario{
+            #saldo
+            constructor(saldoInicial){
+                this.#saldo = saldoInicial
+            }
+
+            get saldo(){
+                return this.#saldo
+            }
+
+            depositar(valor){
+                if(valor > 0){
+                    this.#saldo += valor
+                } else {
+                    throw Error("Valor inválido")
+                }
+            }
+
+            sacar(valor){
+                if(valor > 0){
+                    this.#saldo -= valor
+                } else{
+                    throw Error("Valor inválido")
+                }
+                if(valor > this.#saldo){
+                    throw Error("Saldo insuficiente")
+                    return null
+                }
+            }
+        }
+        const minhaConta = new ContaBancario(100)
+
+
+
+    </script>
+</body>
+</html>
