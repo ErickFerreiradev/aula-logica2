@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ex 05</title>
+</head>
+<body>
+    <script>
+        class Fila{
+            constructor(){
+                this.fila = []
+            }
+
+            enquee(novoElemento){
+                this.fila.push(novoElemento)
+            }
+
+            desenfileirar(){
+                if(this.estaVazio()){
+                    throw new Error ("A fila está vazia")
+                }
+                return this.fila.shift() //retira do início
+            }
+
+            estaVazio(){
+                return this.fila.length === 0
+            }
+
+            espiar(){
+                // if(this.estaVazio()){
+                //     return null
+                // }
+                // this.fila[0]
+
+                this.fila[0] || null
+            }
+
+            limpar(){
+                this.fila.length = []
+            }
+
+            get tamanho(){
+                return this.fila.length
+            }
+        }
+
+
+
+    </script>
+</body>
+</html>
