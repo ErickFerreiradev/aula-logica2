@@ -8,11 +8,15 @@
 <body>
     <script>
         class Fila{
-            constructor(){
+            constructor(limiteFila){
                 this.fila = []
+                this.limite = (limiteFila && limiteFila > 0 ) ? limiteFila : null
             }
 
-            enquee(novoElemento){
+            enfileirar(novoElemento){
+                if(this.estaCheia){
+                    throw new Error("A fila está cheia")
+                }
                 this.fila.push(novoElemento)
             }
 
@@ -25,6 +29,13 @@
 
             estaVazio(){
                 return this.fila.length === 0
+            }
+
+            estaCheia(){
+                if(this.limiteFila !== null){
+                    return this.fila.length >= this.limite
+                }
+                return false
             }
 
             espiar(){
@@ -44,6 +55,7 @@
                 return this.fila.length
             }
         }
+        const minhaFila = new Fila(5)
 
 
 
