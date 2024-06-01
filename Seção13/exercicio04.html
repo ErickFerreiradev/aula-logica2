@@ -8,12 +8,20 @@
 <body>
     <script>
         class Pilha{
-            constructor(){
+            constructor(tamanhoLimite){
+                if(tamanhoLimite && tamanhoLimite < 0){
+                    throw new Error ("Valor não pode ser menor ou igual a zero")
+                }
                 this.pilha = []
+                this.limite = tamanhoLimite || null
             }
 
             add(novoElemento){
-            this.pilha.push(novoElemento)
+                if(this.limite !== null && this.tamanho >= this.limite){
+                    throw new Error("Tamanho limite atinguido")
+                }
+
+                this.pilha.push(novoElemento)
 
             }
 
@@ -41,14 +49,19 @@
             }
         }
 
-        const minhaPilha = new Pilha()
+        const minhaPilha = new Pilha(3)
         console.log(minhaPilha.ifnull())
         minhaPilha.add(1)
         minhaPilha.add(2)
         minhaPilha.add(3)
-        minhaPilha.add(4)
-        console.log(minhaPilha.speek())
         console.log(minhaPilha.ifnull()) // false
+        console.log(minhaPilha.speek())
+
+        try{
+            minhaPilha.add(4)
+        } catch(e){
+            console.log(e.message)
+        }
         console.log(minhaPilha)
         console.log(minhaPilha.speek())
         minhaPilha.remove() // 1,2
