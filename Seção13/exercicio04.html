@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EX 03</title>
+</head>
+<body>
+    <script>
+        class Pilha{
+            constructor(){
+                this.pilha = []
+            }
+
+            add(novoElemento){
+            this.pilha.push(novoElemento)
+
+            }
+
+            remove(){
+                if(this.ifnull()){
+                    throw Error("Pilha vazia")
+                }
+                this.pilha.pop()
+            }
+
+            ifnull(){
+                return this.pilha.length === 0
+            }
+
+            speek(){
+                return this.pilha.length - 1
+            }
+
+            clean(){
+                this.pilha = []
+            }
+
+            get tamanho(){
+                return this.pilha.length
+            }
+        }
+
+        const minhaPilha = new Pilha()
+        console.log(minhaPilha.ifnull())
+        minhaPilha.add(1)
+        minhaPilha.add(2)
+        minhaPilha.add(3)
+        minhaPilha.add(4)
+        console.log(minhaPilha.speek())
+        console.log(minhaPilha.ifnull()) // false
+        console.log(minhaPilha)
+        console.log(minhaPilha.speek())
+        minhaPilha.remove() // 1,2
+        console.log(minhaPilha)
+        console.log(minhaPilha.tamanho)
+    </script>
+</body>
+</html>
