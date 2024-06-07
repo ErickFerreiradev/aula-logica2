@@ -46,6 +46,11 @@
                 const newNode = new Node(value)
                 newNode.next = this.head
                 this.head = newNode
+
+                if(this.#size === 0){
+                    this.tail = newNode
+                }
+
                 this.#size++
             }
 
@@ -101,7 +106,25 @@
             }
 
             remove(value){
+                let current = this.head
+                let prev = null
 
+                while(current){
+                    if(current.value === value){
+                        if(prev){
+                            prev.next = current.next
+                            current.next = null
+                        } else {
+                            this.head = current.next
+                            current.next = null
+                        }
+                        this.#size--
+                        return true
+                    }
+                    prev = current
+                    current = current.next
+                }
+                return false
             }
 
             insetAt(position, value){
@@ -129,12 +152,43 @@
                 }
             }
 
-            removeAr(position){
-                
-            }
+            removeAt(position){ //remove valor no meio (posição)
+                if(position >= 0 && position < this.#size){
+                    if(position === 0){
+                        return this.shift()
+                    }
+                    if(position === this.#size - 1){
+                        return this.pop()
+                    }
 
-            indexOf(value){
+                    let current = this.head
+                    let prev = null
 
+                    for(let i= 0; i < position; i++){
+                        prev = current
+                        current = current.next
+                    }
+
+                    const value = current.value
+                    prev.next = current.next
+                    current.next = null
+                    this.#size--
+                    return value
+
+
+                }
+                return null
+            } 
+            
+            indexOf(value){ // retorna posição do valor
+                let current = this.head
+                for(let i = 0; i < this.#size; i++){
+                    if(current.value === value){
+                        return i;
+                    }
+                    current = current.next
+                }
+                return -1
             }
 
             isEmpty(){
