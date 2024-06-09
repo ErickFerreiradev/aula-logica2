@@ -1,89 +1,117 @@
 <!DOCTYPE html>
-<html lang="pt-br">
-
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tabelas Hash</title>
-
-
+    <link rel="stylesheet" href="../style.css">
+    <title>Lista ligadas ou encadeadas</title>
 </head>
-
 <body>
-
-    <h1>Tabelas Hash</h1>
-
+    
+    <h1>listas ligadas ou encadeadas</h1>
 
     <script>
 
-        class HashNode {
-            constructor(key, value) {
-                this.key = key
+        class Node{
+            constructor(value){
                 this.value = value
                 this.next = null
             }
+
         }
 
-
-        class LinkedList {
+        class LinkedList{
             #size
-            constructor() {
+            constructor(){
                 this.head = null
                 this.tail = null
                 this.#size = 0
             }
 
-            append(key, value, replace) { // adiciona no final da lista
-
-                //primeiro, vamos verificar se a chave já existe
-                let current = this.head
-
-                while (current) {
-                    if (current.key === key) {
-                        if (replace) {
-                            current.value = value
-                        } else {
-                            throw Error("Chave já existe. Mude a chave ou passe true no terceiro parâmetro para substituir o valor da chave existente")
-                        }
-                        return false
-                    }
-                    current = current.next
-                }
-
-
-                const newNode = new HashNode(key, value)
-
-                if (this.head === null) { // estou adicionando o primeiro elemento da lista
+            append(value){ // adiciona elemento no final da lista
+                const newNode = new Node(value)
+            
+                if(this.head === null){
                     this.head = newNode
                     this.tail = newNode
-                } else { // não é o primeiro elemento da lista
+                } else{
                     const last = this.tail
-                    last.next = newNode
+                    last.next = newNode 
                     this.tail = newNode
                 }
                 this.#size++
-                return true
             }
 
-            getByKey(key) {
-                let current = this.head
+            prepend(value){ // adiciona elemento no inicio da lista
+                const newNode = new Node(value)
+                newNode.next = this.head
+                this.head = newNode
 
-                while (current) {
-                    if (current.key === key) {
-                        return current.value
-                    }
-                    current = current.next
+                if(this.#size === 0){
+                    this.tail = newNode
                 }
-                return undefined
+
+                this.#size++
             }
 
-            remove(key) { // remover pela chave
+            pop(){ //revome o último
+                if(this.tail){
+                    const last = this.tail
+                    const value = last.value
+
+                    if(this.#size === 1){
+                        this.head = null
+                        this.tail = null
+                        this.#size = 0
+                        return value
+                    }
+
+                    let current = this.head
+                    let prev = null
+
+                    while(current !== last){
+                        prev = current
+                        current = current.next
+                    }
+
+                    prev.next = null
+                    this.tail = prev
+                    this.#size--
+                    return value
+
+                }
+                return null
+            }
+
+            shift(){ //remove o início
+                if(this.head){
+                    const first = this.head
+                    const value = first.value
+                    const next = first.next
+
+                    if(this.#size === 1){
+                        this.head = null
+                        this.tail = null
+                        this.#size = 0
+                        return value
+                    }
+
+                    first.next = null
+                    this.head = next
+                    this.#size--
+                    return value
+
+                }
+                return null
+            }
+
+            remove(value){
                 let current = this.head
                 let prev = null
 
-                while (current) {
-                    if (current.key === key) {
-                        if (prev) {
+                while(current){
+                    if(current.value === value){
+                        if(prev){
                             prev.next = current.next
                             current.next = null
                         } else {
@@ -99,110 +127,98 @@
                 return false
             }
 
-            isEmpty() {
+            insetAt(position, value){
+                if(position >= 0 && position <= this.#size){
+                    if(position === 0){
+                        return this.prepend(value)
+                    }
+                    if(position === this.#size){
+                        return this.append(value)
+                    }
+
+                    const newNode = new Node(value)
+
+                    let current = this.head
+                    let prev = null
+
+                    for(let i=0; i < position; i++){
+                        prev = current
+                        current = current.next
+                    }
+
+                    newNode.next = current
+                    prev.next = newNode
+                    this.#size++
+                }
+            }
+
+            removeAt(position){ //remove valor no meio (posição)
+                if(position >= 0 && position < this.#size){
+                    if(position === 0){
+                        return this.shift()
+                    }
+                    if(position === this.#size - 1){
+                        return this.pop()
+                    }
+
+                    let current = this.head
+                    let prev = null
+
+                    for(let i= 0; i < position; i++){
+                        prev = current
+                        current = current.next
+                    }
+
+                    const value = current.value
+                    prev.next = current.next
+                    current.next = null
+                    this.#size--
+                    return value
+
+
+                }
+                return null
+            } 
+            
+            indexOf(value){ // retorna posição do valor
+                let current = this.head
+                for(let i = 0; i < this.#size; i++){
+                    if(current.value === value){
+                        return i;
+                    }
+                    current = current.next
+                }
+                return -1
+            }
+
+            isEmpty(){
                 return this.head === null
             }
 
-            get size() {
+            get size(){
                 return this.#size
             }
 
-            print() {
+            print(){
                 let current = this.head
                 let result = ""
-                while (current) {
-                    result += current.value + " --> "
-                    current = current.next
+                while(current){
+                        result += current.value + " --> "
+                        current = current.next
                 }
-
-                console.log(result + " --- Size: " + this.#size)
-
+                console.log(result + "Size: " + this.#size)
             }
         }
 
-        class HashTable {
-            #size
-            constructor(maxSize) {
-                this.#size = 0
-                this.table = []
-                this.max = maxSize
-            }
-
-            hash(key) {
-                let hashValue = 0
-                for (let i = 0; i < key.length; i++) {
-                    hashValue += key.charCodeAt(i)
-                }
-                return hashValue % this.max
-            }
-
-            insert(key, value, replace) {
-                const index = this.hash(key)
-
-                if (this.table[index] === undefined) {
-                    this.table[index] = new LinkedList()
-                }
-
-                const result = this.table[index].append(key, value, replace)
-                if (result) {
-                    this.#size++
-                }
-
-            }
-
-            get(key) {
-                const index = this.hash(key)
-
-                if (this.table[index] !== undefined) {
-                    //já temos uma linked list
-                    return this.table[index].getByKey(key)
-                }
-                return undefined
-
-            }
-
-            remove(key) {
-                const index = this.hash(key)
-
-                if (this.table[index] !== undefined) {
-                    //já temos uma linked list 
-                    const result = this.table[index].remove(key)
-
-                    if (result) {
-                        this.#size--
-                        if (this.table[index].isEmpty()) {
-                            this.table[index] = undefined
-                        }
-                    }
-                    return result
-
-                }
-
-                return false // chave nao encontrada
-
-            }
-        }
-
-        const table = new HashTable(97) // 97 é número primo e funciona melhor em tabelas hash
-        table.insert("daniel@serliv.com", "Daniel Morales")
-        console.log(table.get("daniel@serliv.com"))
-        table.insert("daniel@serliv.com", "Daniel Tapias Morales", true)
-        console.log(table.get("daniel@serliv.com"))
-        console.log(table.remove("daniel@serliv.com"))
-        console.log(table.remove("daniel@gmail.com"))
-        console.log(table.get("daniel@serliv.com"))
+        let list = new LinkedList()
 
 
-
-
-
-
-
-
-
-
-
+        console.log(list.isEmpty())
+        list.append(10)
+        list.append(20)
+        list.print()
+        list.prepend(5)
+        list.print()
     </script>
 </body>
-
 </html>
