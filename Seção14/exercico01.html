@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // função recursiva
+        function getPG(razao, limite, n = 1){
+           if(n * razao < limite){
+            // return proximoPG(razao, limite, n)
+            retun getPG(razao, limite, n * razao)
+           }
+           console.log("Fim")
+           return n
+        }
+
+        // function proximoPG(razao, limite, n){
+        //     n = n * razao
+        //     console.log("proximaPG", n)
+        //     return getPG(razao, limite , n)
+        // }
+        getPG(2, 35)
+
+    </script>
+</body>
+</html>
