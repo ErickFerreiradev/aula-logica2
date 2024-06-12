@@ -11,7 +11,7 @@
         function getPG(razao, limite, n = 1){
            if(n * razao < limite){
             // return proximoPG(razao, limite, n)
-            retun getPG(razao, limite, n * razao)
+            return getPG(razao, limite, n * razao)
            }
            console.log("Fim")
            return n

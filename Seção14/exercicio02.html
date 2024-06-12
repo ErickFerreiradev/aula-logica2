@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        let count1 = 0
+
+        function getPG(razao, posicao){
+
+            let result = 1
+
+            for(let i = 1; i <= posicao; i++ ){
+                count1++        
+                result *= razao
+
+            }
+            return result
+        }
+
+        // console.log(getPG(2,5))
+        // console.log(count1)
+
+
+        count2 = 0
+
+        function getPG2(razao, posicao){
+            if( posicao === 0){
+                console.log("posicao é 0")
+                return 1
+            } 
+            count2++
+            console.log("posicao = ", posicao - 1)
+            const pg = razao * getPG2(razao, posicao - 1)
+            console.log(pg)
+            return pg
+            
+            
+        }
+
+        console.log(getPG2(2,5))
+        console.log("Contador = " + count2)
+    </script>
+</body>
+</html>
