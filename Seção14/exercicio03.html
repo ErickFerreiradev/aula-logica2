@@ -14,13 +14,23 @@
         function executar(cb){
             console.log("executar chamado")
             console.log(cb)
-            console.log(cb())
+            console.log(cb("chamada cb"))
         }
         
-        executar(function (){ 
+        executar(function (x){ 
             console.log("função anonima")
+            console.log(x)
 
         })
+
+
+        function teste(param){
+            console.log("funcao teste", param)
+            return "valor retornado da funcao teste"
+        }
+        teste(100)
+        executar(teste)
+        
     </script>
 </body>
 </html>
