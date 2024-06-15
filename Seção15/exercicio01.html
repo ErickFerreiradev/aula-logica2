@@ -112,8 +112,55 @@
                 }
                 return node
             }
-        }
 
+            preOrderTraverse(callback) {
+            this.#preOrderTraverseNode(this.root, callback)
+            }
+
+
+            #preOrderTraverseNode(node, callback) {
+                if (node !== null && typeof callback === "function") {
+                    callback(node.key)
+                    this.#preOrderTraverseNode(node.left, callback)
+                    this.#preOrderTraverseNode(node.right, callback)
+                }
+            }
+
+            inOrderTraverse(callback) {
+                this.#inOrderTraverseNode(this.root, callback)
+            }
+
+            #inOrderTraverseNode(node, callback) {
+                if (node !== null && typeof callback === "function") {
+                    this.#inOrderTraverseNode(node.left, callback)
+                    callback(node.key)
+                    this.#inOrderTraverseNode(node.right, callback)
+                }
+            }
+
+            postOrderTraverse(callback) {
+                this.#postOrderTraverseNode(this.root, callback)
+            }
+
+            #postOrderTraverseNode(node, callback) {
+                if (node !== null && typeof callback === "function") {
+                    this.#postOrderTraverseNode(node.left, callback)
+                    this.#postOrderTraverseNode(node.right, callback)
+                    callback(node.key)
+                }
+            }
+                    }
+
+            
+
+
+
+
+        bst.postOrderTraverse(imprimir)
+
+        function imprimir(key) {
+        document.write("key: " + key + "<hr>")
+        }
 
 
         const bst = new BinarySearchTree()
